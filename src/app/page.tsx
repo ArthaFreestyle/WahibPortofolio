@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { FlipWords } from "./components/ui/flip-words";
 import { motion } from "motion/react";
-import { HeroHighlight, Highlight } from "@/app/components/ui/hero-highlight";
+import { HeroHighlight, Highlight } from "./../app/components/ui/hero-highlight";
 import { Canvas } from "@react-three/fiber";
 import { Physics } from "@react-three/rapier";
 import { Band } from ".././app/lib/band";
