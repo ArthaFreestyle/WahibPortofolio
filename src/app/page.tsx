@@ -6,8 +6,8 @@ import { motion } from "motion/react";
 import { HeroHighlight, Highlight } from "@/app/components/ui/hero-highlight";
 import { Canvas } from "@react-three/fiber";
 import { Physics } from "@react-three/rapier";
-import { Band } from "@/app/lib/band";
-import { Button } from "@/components/ui/button";
+import { Band } from ".././app/lib/band";
+import { Button } from ".././components/ui/button";
 import { ArrowRight, Menu, X } from 'lucide-react';
 
 export default function Home() {
