@@ -151,30 +151,7 @@ export default function Home() {
         </div>
       </HeroHighlight>
       
-      {/* Feature highlights section */}
-      <section className="container mx-auto px-6 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {[
-            { title: "AI-Powered", description: "Generate compelling content with our advanced AI tools" },
-            { title: "Customizable", description: "Tailor your stories to match your unique brand voice" },
-            { title: "Engaging", description: "Create content that resonates with your target audience" }
-          ].map((feature, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
-              className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow"
-            >
-              <div className="w-12 h-12 bg-rose-100 rounded-lg flex items-center justify-center mb-4">
-                <div className="w-6 h-6 bg-rose-600 rounded-md" />
-              </div>
-              <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-              <p className="text-neutral-600">{feature.description}</p>
-            </motion.div>
-          ))}
-        </div>
-      </section>
+
     </div>
   );
 }
