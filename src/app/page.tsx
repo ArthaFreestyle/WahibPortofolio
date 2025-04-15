@@ -233,28 +233,32 @@ export default function Home() {
                     transition={{ delay: 0.7, duration: 0.8 }}
                     className="mt-8 flex flex-col sm:flex-row gap-4"
                   >
-                    <a
-                      href="https://wa.me/62895706016809"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Button
-                        size="lg"
-                        className="group bg-rose-600 hover:bg-rose-700"
-                      >
-                        Contact Me
-                        <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                      </Button>
-                    </a>
-                    <Button
-                      size="lg"
-                      variant="outline"
-                      onClick={handleDownloadCV}
-                      className="border-rose-200 hover:bg-rose-50"
-                    >
-                      Download CV
-                      <Download className="ml-2 h-4 w-4" />
-                    </Button>
+                    <div className="flex flex-col sm:flex-row gap-4 w-full">
+  <a
+    href="https://wa.me/62895706016809"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="w-full sm:w-auto"
+  >
+    <Button
+      size="lg"
+      className="w-full sm:w-auto group bg-rose-600 hover:bg-rose-700"
+    >
+      Contact Me
+      <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+    </Button>
+  </a>
+
+  <Button
+    size="lg"
+    variant="outline"
+    onClick={handleDownloadCV}
+    className="w-full sm:w-auto border-rose-200 hover:bg-rose-50"
+  >
+    Download CV
+    <Download className="ml-2 h-4 w-4" />
+  </Button>
+</div>
                   </motion.div>
 
                   <motion.div
