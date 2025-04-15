@@ -17,9 +17,6 @@ import {
   Mail,
   Phone,
   Briefcase,
-  GraduationCap,
-  Code,
-  ChevronRight,
 } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
@@ -27,6 +24,7 @@ import { toast } from "sonner"
 import About from "./about/about"
 import  {Experience} from "./experience/experience"
 import Skills from "./skills/skills"
+import Education from "./education/education"
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -266,158 +264,11 @@ export default function Home() {
 
       <Experience/>
       {/* Experience Section */}
-      <section id="experience" className="container mx-auto px-6 py-20">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          viewport={{ once: true, margin: "-100px" }}
-        >
-          <div className="flex items-center gap-2 mb-6">
-            <Briefcase className="text-rose-600" size={24} />
-            <h2 className="text-3xl font-bold text-neutral-800">Experience</h2>
-          </div>
-
-          <div className="relative border-l-2 border-rose-200 pl-6 ml-3 space-y-10">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-              viewport={{ once: true }}
-              className="relative"
-            >
-              <div className="absolute -left-[2.35rem] top-0 w-5 h-5 rounded-full bg-rose-600 border-4 border-white" />
-              <Card className="overflow-hidden">
-                <div className="h-2 bg-rose-600" />
-                <CardContent className="pt-6">
-                  <h3 className="text-xl font-semibold text-rose-600">Host Live & Content Support – PRECISE</h3>
-                  <p className="text-sm text-neutral-500 mb-3">Maret 2024 – Sekarang</p>
-                  <ul className="space-y-2">
-                    {[
-                      "Live streaming dan strategi konten sesuai platform",
-                      "Rekor omzet Rp450 juta di Shopee dalam 1 bulan",
-                      "Rata-rata omzet bulanan Rp219 juta",
-                    ].map((item, i) => (
-                      <motion.li
-                        key={i}
-                        initial={{ opacity: 0, x: -10 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.3, delay: i * 0.1 }}
-                        viewport={{ once: true }}
-                        className="flex items-start gap-2"
-                      >
-                        <ChevronRight className="text-rose-500 mt-1 flex-shrink-0" size={16} />
-                        <span className="text-neutral-700">{item}</span>
-                      </motion.li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="relative"
-            >
-              <div className="absolute -left-[2.35rem] top-0 w-5 h-5 rounded-full bg-rose-400 border-4 border-white" />
-              <Card className="overflow-hidden">
-                <div className="h-2 bg-rose-400" />
-                <CardContent className="pt-6">
-                  <h3 className="text-xl font-semibold text-rose-600">
-                    Kepala Unit Bisnis Offline – PETSNPLANTSINDONESIA
-                  </h3>
-                  <p className="text-sm text-neutral-500 mb-3">Oktober 2023 – Februari 2024</p>
-                  <ul className="space-y-2">
-                    {[
-                      "Mengelola operasional toko, laporan keuangan, dan promosi digital",
-                      "Meningkatkan omzet dari Rp500rb ke Rp2jt/minggu dalam 2 bulan",
-                      "Rating Google Maps meningkat dari 4.5 ke 4.9",
-                    ].map((item, i) => (
-                      <motion.li
-                        key={i}
-                        initial={{ opacity: 0, x: -10 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.3, delay: i * 0.1 }}
-                        viewport={{ once: true }}
-                        className="flex items-start gap-2"
-                      >
-                        <ChevronRight className="text-rose-500 mt-1 flex-shrink-0" size={16} />
-                        <span className="text-neutral-700">{item}</span>
-                      </motion.li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            </motion.div>
-          </div>
-        </motion.div>
-      </section>
-
+      
       {/* Education Section */}
-      <section id="education" className="bg-white py-20 px-6">
-        <div className="container mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            viewport={{ once: true, margin: "-100px" }}
-          >
-            <div className="flex items-center gap-2 mb-6">
-              <GraduationCap className="text-rose-600" size={24} />
-              <h2 className="text-3xl font-bold text-neutral-800">Education</h2>
-            </div>
+      <Education/>
 
-            <Card className="overflow-hidden">
-              <div className="h-2 bg-rose-500" />
-              <CardContent className="pt-6">
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between">
-                  <div>
-                    <h3 className="text-xl font-semibold text-neutral-800">SMKN 2 Bojonegoro</h3>
-                    <p className="text-rose-600">Kimia Industri</p>
-                  </div>
-                  <div className="mt-2 md:mt-0">
-                    <span className="inline-block px-3 py-1 bg-rose-100 text-rose-700 rounded-full text-sm">
-                      2020 – 2023
-                    </span>
-                  </div>
-                </div>
-                <div className="mt-4 grid md:grid-cols-2 gap-4">
-                  <div className="bg-gray-50 p-4 rounded-lg">
-                    <h4 className="font-medium text-neutral-800 mb-2">Kegiatan & Pencapaian</h4>
-                    <ul className="space-y-2">
-                      <li className="text-neutral-700 text-sm flex items-start gap-2">
-                        <ChevronRight className="text-rose-500 mt-1 flex-shrink-0" size={16} />
-                        <span>Aktif dalam kegiatan ekstrakurikuler</span>
-                      </li>
-                      <li className="text-neutral-700 text-sm flex items-start gap-2">
-                        <ChevronRight className="text-rose-500 mt-1 flex-shrink-0" size={16} />
-                        <span>Mengembangkan keterampilan komunikasi dan kerja tim</span>
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="bg-gray-50 p-4 rounded-lg">
-                    <h4 className="font-medium text-neutral-800 mb-2">Keterampilan yang Dipelajari</h4>
-                    <ul className="space-y-2">
-                      <li className="text-neutral-700 text-sm flex items-start gap-2">
-                        <ChevronRight className="text-rose-500 mt-1 flex-shrink-0" size={16} />
-                        <span>Analisis dan pemecahan masalah</span>
-                      </li>
-                      <li className="text-neutral-700 text-sm flex items-start gap-2">
-                        <ChevronRight className="text-rose-500 mt-1 flex-shrink-0" size={16} />
-                        <span>Manajemen proyek dan kerja laboratorium</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </motion.div>
-        </div>
-      </section>
-
+     
       {/* Projects/Portfolio Section */}
       <section id="projects" className="container mx-auto px-6 py-20">
         <motion.div
