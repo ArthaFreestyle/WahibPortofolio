@@ -1,157 +1,673 @@
-"use client";
+"use client"
 
-import { useState, useEffect } from "react";
-import { FlipWords } from "./components/ui/flip-words";
-import { motion } from "motion/react";
-import { HeroHighlight, Highlight } from "./../app/components/ui/hero-highlight";
-import { Canvas } from "@react-three/fiber";
-import { Physics } from "@react-three/rapier";
-import { Band } from ".././app/lib/band";
-import { Button } from ".././components/ui/button";
-import { ArrowRight, Menu, X } from 'lucide-react';
+import React from "react"
+
+import { useState, useEffect, useRef } from "react"
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
+import { HeroHighlight, Highlight } from "@/app/components/ui/hero-highlight"
+import { Canvas } from "@react-three/fiber"
+import { Physics } from "@react-three/rapier"
+import { Band } from "@/app/lib/band"
+import { Button } from "@/components/ui/button"
+import {
+  ArrowRight,
+  Menu,
+  X,
+  Download,
+  Mail,
+  Phone,
+  Briefcase,
+  GraduationCap,
+  Code,
+  ChevronRight,
+} from "lucide-react"
+import { Card, CardContent } from "@/components/ui/card"
+import { Progress } from "@/components/ui/progress"
+import { toast } from "sonner"
+import About from "./about/about"
+import  {Experience} from "./experience/experience"
+import Skills from "./skills/skills"
 
 export default function Home() {
-  const words = ["unique", "cute", "beautiful", "funny", "quirky"];
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
+  const [activeSection, setActiveSection] = useState("home")
+  
+
+  const sections = ["home", "about", "skill", "experience", "education", "contact"]
+  const sectionRefs = useRef(sections.map(() => React.createRef()))
+
+  const { scrollYProgress } = useScroll()
+  const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0])
+  const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.95])
 
   // Check if we're on mobile for better performance
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
+      setIsMobile(window.innerWidth < 768)
+    }
+
+    checkMobile()
+    window.addEventListener("resize", checkMobile)
+    return () => window.removeEventListener("resize", checkMobile)
+  }, [])
+
+  // Animate skill bars on view
+  
+
+  // Intersection observer for sections
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id)
+          }
+        })
+      },
+      { threshold: 0.5 },
+    )
+
+    document.querySelectorAll("section[id]").forEach((section) => {
+      observer.observe(section)
+    })
+
+    return () => {
+      document.querySelectorAll("section[id]").forEach((section) => {
+        observer.unobserve(section)
+      })
+    }
+  }, [])
+
+  const handleDownloadCV = () => {
+    toast.success("CV Downloaded", {
+      description: "Your CV has been downloaded successfully!",
+    })
+  }
+
+  const handleContactSubmit = (e) => {
+    e.preventDefault()
+    toast.success("Message Sent!", {
+      description: "Thank you for your message. I'll get back to you soon!",
+    })
+  }
+
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId)
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" })
+    }
+    setIsMenuOpen(false)
+  }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
+    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 overflow-x-hidden">
       {/* Navigation */}
-      <nav className="container mx-auto px-6 py-4">
-        <div className="flex justify-between items-center">
-          <motion.div 
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-xl font-bold text-neutral-800"
-          >
-            Wahib
-          </motion.div>
-          
-          {/* Mobile menu button */}
-          <div className="md:hidden">
-            <Button 
-              variant="ghost" 
-              size="icon" 
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label="Toggle menu"
+      <nav className="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-md z-50 shadow-sm">
+        <div className="container mx-auto px-6 py-4">
+          <div className="flex justify-between items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+              className="text-xl font-bold text-neutral-800"
             >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </Button>
+              <span className="text-rose-600">W</span>ahib
+            </motion.div>
+
+            {/* Mobile menu button */}
+            <div className="md:hidden">
+              <Button variant="ghost" size="icon" onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label="Toggle menu">
+                {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              </Button>
+            </div>
+
+            {/* Desktop navigation */}
+            <div className="hidden md:flex space-x-6">
+              {["Home", "About", "Skill", "Experience", "Education", "Contact"].map((item, index) => (
+                <button
+                  key={item}
+                  onClick={() => scrollToSection(sections[index])}
+                  className={`text-neutral-600 hover:text-rose-600 transition-colors relative ${
+                    activeSection === sections[index] ? "text-rose-600 font-medium" : ""
+                  }`}
+                >
+                  {item}
+                  {activeSection === sections[index] && (
+                    <motion.div
+                      layoutId="activeSection"
+                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-rose-600"
+                    />
+                  )}
+                </button>
+              ))}
+            </div>
           </div>
-          
-          {/* Desktop navigation */}
-          <div className="hidden md:flex space-x-6">
-            {["Home", "About", "Skill", "Experience"].map((item) => (
-              <a 
-                key={item} 
-                href="#" 
-                className="text-neutral-600 hover:text-neutral-900 transition-colors"
+
+          {/* Mobile menu */}
+          <AnimatePresence>
+            {isMenuOpen && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.3 }}
+                className="md:hidden mt-4 py-4 space-y-4"
               >
-                {item}
-              </a>
-            ))}
-          </div>
+                {["Home", "About", "Skill", "Experience", "Education", "Contact"].map((item, index) => (
+                  <button
+                    key={item}
+                    onClick={() => scrollToSection(sections[index])}
+                    className={`block w-full text-left px-4 py-2 rounded-md transition-colors ${
+                      activeSection === sections[index]
+                        ? "bg-rose-50 text-rose-600 font-medium"
+                        : "text-neutral-600 hover:bg-gray-50"
+                    }`}
+                  >
+                    {item}
+                  </button>
+                ))}
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
-        
-        {/* Mobile menu */}
-        {isMenuOpen && (
-          <motion.div 
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden mt-4 py-4 space-y-4"
-          >
-            {["Home", "Features", "Pricing", "About","Experience"].map((item) => (
-              <a 
-                key={item} 
-                href="#" 
-                className="block text-neutral-600 hover:text-neutral-900 transition-colors py-2"
-              >
-                {item}
-              </a>
-            ))}
-    
-          </motion.div>
-        )}
       </nav>
 
-      <HeroHighlight>
-        <div className="container mx-auto px-6 pt-8 pb-16 md:pt-12 md:pb-24">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            {/* Left side - Text content */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-              className="w-full md:w-1/2 lg:w-2/5 md:pr-6 pb-8 md:pb-0"
-            >
-              <h1 className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold text-neutral-800 leading-tight md:leading-snug">
-                Where Your{" "}
-                <FlipWords words={words} className="text-rose-600" />{" "}
-                <br className="hidden sm:block" />
-                Story Becomes{" "}
-                <Highlight className="text-black dark:text-white">
-                  Compelling Content.
-                </Highlight>
-              </h1>
-              
-              <p className="mt-4 text-neutral-600 text-lg max-w-md">
-                Transform your ideas into engaging narratives that captivate your audience and leave a lasting impression.
-              </p>
-              
-              <div className="mt-8 flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="group">
-                  Contact Me
-                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Button>
-                <Button size="lg" variant="outline">
-                  Download CV
-                </Button>
-              </div>
-              
-              
-            </motion.div>
-            
-            {/* Right side - 3D Band (Optimized) */}
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1, delay: 0.5 }}
-              className="w-full md:w-1/2 lg:w-3/5 h-[400px] sm:h-[500px] md:h-[540px] lg:h-[600px] rounded-xl overflow-hidden shadow-lg"
-            >
-              <Canvas 
-                camera={{ position: [0, 0, isMobile ? 15 : 13], fov: isMobile ? 30 : 25 }}
-                dpr={[1, 2]} // Optimize performance by limiting pixel ratio
-                performance={{ min: 0.5 }} // Allow performance scaling for mobile
+      {/* Hero Section */}
+      <section id="home" className="pt-24 md:pt-32">
+        <HeroHighlight>
+          <div className="container mx-auto px-6 pt-8 pb-16 md:pt-12 md:pb-24">
+            <div className="flex flex-col md:flex-row justify-between items-center">
+              {/* Left side - Text content */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.2 }}
+                className="w-full md:w-1/2 lg:w-2/5 md:pr-6 pb-8 md:pb-0"
               >
-                <ambientLight intensity={Math.PI} />
-                <Physics 
-                  interpolate 
-                  gravity={[0, -40, 0]} 
-                  timeStep={1 / 60}
+                <motion.div style={{ opacity, scale }} className="origin-left">
+                  <h1 className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold text-neutral-800 leading-tight md:leading-snug">
+                    Hi, I'm <span className="text-rose-600">SILAHUDDIN MAWAHIB</span>
+                    <br className="hidden sm:block" />
+                    <Highlight className="text-black dark:text-white">Marketing & Creative Strategist</Highlight>
+                  </h1>
+
+                  <motion.p
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.5, duration: 0.8 }}
+                    className="mt-4 text-neutral-600 text-lg max-w-md"
+                  >
+                    Saya berpengalaman dalam pemasaran dan sangat tertarik menciptakan interaksi unik dengan audiens
+                    melalui pendekatan kreatif dan komunikatif.
+                  </motion.p>
+
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.7, duration: 0.8 }}
+                    className="mt-8 flex flex-col sm:flex-row gap-4"
+                  >
+                    <Button size="lg" className="group bg-rose-600 hover:bg-rose-700">
+                      Contact Me
+                      <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </Button>
+                    <Button
+                      size="lg"
+                      variant="outline"
+                      onClick={handleDownloadCV}
+                      className="border-rose-200 hover:bg-rose-50"
+                    >
+                      Download CV
+                      <Download className="ml-2 h-4 w-4" />
+                    </Button>
+                  </motion.div>
+
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 1, duration: 0.8 }}
+                    className="mt-8 flex items-center gap-4"
+                  >
+                    
+                  </motion.div>
+                </motion.div>
+              </motion.div>
+
+              {/* Right side - 3D Band (Optimized) */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1, delay: 0.5 }}
+                className="w-full md:w-1/2 lg:w-3/5 h-[400px] sm:h-[500px] md:h-[540px] lg:h-[600px] rounded-xl overflow-hidden shadow-lg relative"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-rose-100/30 to-transparent z-10 pointer-events-none rounded-xl" />
+                <Canvas
+                  camera={{ position: [0, 0, isMobile ? 15 : 13], fov: isMobile ? 30 : 25 }}
+                  dpr={[1, 2]} // Optimize performance by limiting pixel ratio
+                  performance={{ min: 0.5 }} // Allow performance scaling for mobile
                 >
-                  <Band  />
-                </Physics>
-              </Canvas>
+                  <ambientLight intensity={8} />
+                  <directionalLight position={[6, 6, 6]} intensity={2} />
+                  <Physics interpolate gravity={[0, -40, 0]} timeStep={1 / 60}>
+                    <Band />
+                  </Physics>
+                </Canvas>
+              </motion.div>
+            </div>
+          </div>
+        </HeroHighlight>
+      </section>
+
+      {/* About Section */}
+      <About/>
+      {/* Skills Section */}
+      <Skills/>
+
+      <Experience/>
+      {/* Experience Section */}
+      <section id="experience" className="container mx-auto px-6 py-20">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true, margin: "-100px" }}
+        >
+          <div className="flex items-center gap-2 mb-6">
+            <Briefcase className="text-rose-600" size={24} />
+            <h2 className="text-3xl font-bold text-neutral-800">Experience</h2>
+          </div>
+
+          <div className="relative border-l-2 border-rose-200 pl-6 ml-3 space-y-10">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+              className="relative"
+            >
+              <div className="absolute -left-[2.35rem] top-0 w-5 h-5 rounded-full bg-rose-600 border-4 border-white" />
+              <Card className="overflow-hidden">
+                <div className="h-2 bg-rose-600" />
+                <CardContent className="pt-6">
+                  <h3 className="text-xl font-semibold text-rose-600">Host Live & Content Support – PRECISE</h3>
+                  <p className="text-sm text-neutral-500 mb-3">Maret 2024 – Sekarang</p>
+                  <ul className="space-y-2">
+                    {[
+                      "Live streaming dan strategi konten sesuai platform",
+                      "Rekor omzet Rp450 juta di Shopee dalam 1 bulan",
+                      "Rata-rata omzet bulanan Rp219 juta",
+                    ].map((item, i) => (
+                      <motion.li
+                        key={i}
+                        initial={{ opacity: 0, x: -10 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.3, delay: i * 0.1 }}
+                        viewport={{ once: true }}
+                        className="flex items-start gap-2"
+                      >
+                        <ChevronRight className="text-rose-500 mt-1 flex-shrink-0" size={16} />
+                        <span className="text-neutral-700">{item}</span>
+                      </motion.li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="relative"
+            >
+              <div className="absolute -left-[2.35rem] top-0 w-5 h-5 rounded-full bg-rose-400 border-4 border-white" />
+              <Card className="overflow-hidden">
+                <div className="h-2 bg-rose-400" />
+                <CardContent className="pt-6">
+                  <h3 className="text-xl font-semibold text-rose-600">
+                    Kepala Unit Bisnis Offline – PETSNPLANTSINDONESIA
+                  </h3>
+                  <p className="text-sm text-neutral-500 mb-3">Oktober 2023 – Februari 2024</p>
+                  <ul className="space-y-2">
+                    {[
+                      "Mengelola operasional toko, laporan keuangan, dan promosi digital",
+                      "Meningkatkan omzet dari Rp500rb ke Rp2jt/minggu dalam 2 bulan",
+                      "Rating Google Maps meningkat dari 4.5 ke 4.9",
+                    ].map((item, i) => (
+                      <motion.li
+                        key={i}
+                        initial={{ opacity: 0, x: -10 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.3, delay: i * 0.1 }}
+                        viewport={{ once: true }}
+                        className="flex items-start gap-2"
+                      >
+                        <ChevronRight className="text-rose-500 mt-1 flex-shrink-0" size={16} />
+                        <span className="text-neutral-700">{item}</span>
+                      </motion.li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
             </motion.div>
           </div>
-        </div>
-      </HeroHighlight>
-      
+        </motion.div>
+      </section>
 
+      {/* Education Section */}
+      <section id="education" className="bg-white py-20 px-6">
+        <div className="container mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true, margin: "-100px" }}
+          >
+            <div className="flex items-center gap-2 mb-6">
+              <GraduationCap className="text-rose-600" size={24} />
+              <h2 className="text-3xl font-bold text-neutral-800">Education</h2>
+            </div>
+
+            <Card className="overflow-hidden">
+              <div className="h-2 bg-rose-500" />
+              <CardContent className="pt-6">
+                <div className="flex flex-col md:flex-row md:items-center md:justify-between">
+                  <div>
+                    <h3 className="text-xl font-semibold text-neutral-800">SMKN 2 Bojonegoro</h3>
+                    <p className="text-rose-600">Kimia Industri</p>
+                  </div>
+                  <div className="mt-2 md:mt-0">
+                    <span className="inline-block px-3 py-1 bg-rose-100 text-rose-700 rounded-full text-sm">
+                      2020 – 2023
+                    </span>
+                  </div>
+                </div>
+                <div className="mt-4 grid md:grid-cols-2 gap-4">
+                  <div className="bg-gray-50 p-4 rounded-lg">
+                    <h4 className="font-medium text-neutral-800 mb-2">Kegiatan & Pencapaian</h4>
+                    <ul className="space-y-2">
+                      <li className="text-neutral-700 text-sm flex items-start gap-2">
+                        <ChevronRight className="text-rose-500 mt-1 flex-shrink-0" size={16} />
+                        <span>Aktif dalam kegiatan ekstrakurikuler</span>
+                      </li>
+                      <li className="text-neutral-700 text-sm flex items-start gap-2">
+                        <ChevronRight className="text-rose-500 mt-1 flex-shrink-0" size={16} />
+                        <span>Mengembangkan keterampilan komunikasi dan kerja tim</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div className="bg-gray-50 p-4 rounded-lg">
+                    <h4 className="font-medium text-neutral-800 mb-2">Keterampilan yang Dipelajari</h4>
+                    <ul className="space-y-2">
+                      <li className="text-neutral-700 text-sm flex items-start gap-2">
+                        <ChevronRight className="text-rose-500 mt-1 flex-shrink-0" size={16} />
+                        <span>Analisis dan pemecahan masalah</span>
+                      </li>
+                      <li className="text-neutral-700 text-sm flex items-start gap-2">
+                        <ChevronRight className="text-rose-500 mt-1 flex-shrink-0" size={16} />
+                        <span>Manajemen proyek dan kerja laboratorium</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Projects/Portfolio Section */}
+      <section id="projects" className="container mx-auto px-6 py-20">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true, margin: "-100px" }}
+        >
+          <div className="flex items-center gap-2 mb-6">
+            <Briefcase className="text-rose-600" size={24} />
+            <h2 className="text-3xl font-bold text-neutral-800">Projects & Campaigns</h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              {
+                title: "Shopee Live Campaign",
+                description: "Kampanye live streaming yang menghasilkan omzet Rp450 juta dalam satu bulan",
+                image: "/placeholder.svg?height=200&width=400",
+                tags: ["Live Streaming", "E-commerce", "Sales"],
+              },
+              {
+                title: "Toko Offline Rebrand",
+                description: "Rebranding toko offline yang meningkatkan rating Google Maps dari 4.5 ke 4.9",
+                image: "/placeholder.svg?height=200&width=400",
+                tags: ["Branding", "Retail", "Customer Experience"],
+              },
+              {
+                title: "Digital Marketing Strategy",
+                description: "Strategi pemasaran digital yang meningkatkan engagement sebesar 200%",
+                image: "/placeholder.svg?height=200&width=400",
+                tags: ["Digital Marketing", "Strategy", "Social Media"],
+              },
+            ].map((project, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <Card className="overflow-hidden h-full flex flex-col">
+                  <div className="relative h-48 overflow-hidden">
+                    <img
+                      src={project.image || "/placeholder.svg"}
+                      alt={project.title}
+                      className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                  </div>
+                  <CardContent className="pt-6 flex-grow flex flex-col">
+                    <h3 className="text-xl font-semibold text-neutral-800 mb-2">{project.title}</h3>
+                    <p className="text-neutral-600 text-sm flex-grow">{project.description}</p>
+                    <div className="flex flex-wrap gap-2 mt-4">
+                      {project.tags.map((tag, j) => (
+                        <span key={j} className="px-2 py-1 bg-rose-100 text-rose-700 rounded-full text-xs">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </section>
+
+
+      {/* Contact Section */}
+      <section id="contact" className="container mx-auto px-6 py-20">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true, margin: "-100px" }}
+        >
+          <div className="flex items-center gap-2 mb-6">
+            <Mail className="text-rose-600" size={24} />
+            <h2 className="text-3xl font-bold text-neutral-800">Contact</h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            <div>
+              <Card>
+                <CardContent className="pt-6">
+                  <h3 className="text-xl font-semibold mb-4 text-neutral-800">Get In Touch</h3>
+                  <form onSubmit={handleContactSubmit} className="space-y-4">
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="space-y-2">
+                        <label htmlFor="name" className="text-sm font-medium text-neutral-700">
+                          Name
+                        </label>
+                        <input
+                          id="name"
+                          type="text"
+                          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-rose-500 focus:border-transparent"
+                          placeholder="Your name"
+                          required
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <label htmlFor="email" className="text-sm font-medium text-neutral-700">
+                          Email
+                        </label>
+                        <input
+                          id="email"
+                          type="email"
+                          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-rose-500 focus:border-transparent"
+                          placeholder="Your email"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div className="space-y-2">
+                      <label htmlFor="subject" className="text-sm font-medium text-neutral-700">
+                        Subject
+                      </label>
+                      <input
+                        id="subject"
+                        type="text"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-rose-500 focus:border-transparent"
+                        placeholder="Subject"
+                        required
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <label htmlFor="message" className="text-sm font-medium text-neutral-700">
+                        Message
+                      </label>
+                      <textarea
+                        id="message"
+                        rows={4}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-rose-500 focus:border-transparent"
+                        placeholder="Your message"
+                        required
+                      />
+                    </div>
+                    <Button type="submit" className="w-full bg-rose-600 hover:bg-rose-700">
+                      Send Message
+                    </Button>
+                  </form>
+                </CardContent>
+              </Card>
+            </div>
+
+            <div>
+              <Card>
+                <CardContent className="pt-6">
+                  <h3 className="text-xl font-semibold mb-4 text-neutral-800">Contact Information</h3>
+                  <div className="space-y-4">
+                    <div className="flex items-start gap-3">
+                      <div className="w-10 h-10 rounded-full bg-rose-100 flex items-center justify-center text-rose-600">
+                        <Mail size={20} />
+                      </div>
+                      <div>
+                        <p className="font-medium text-neutral-800">Email</p>
+                        <p className="text-neutral-600">shudmawahib@gmail.com</p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-3">
+                      <div className="w-10 h-10 rounded-full bg-rose-100 flex items-center justify-center text-rose-600">
+                        <Phone size={20} />
+                      </div>
+                      <div>
+                        <p className="font-medium text-neutral-800">Phone</p>
+                        <p className="text-neutral-600">0895706016809</p>
+                      </div>
+                    </div>
+
+                    <div className="mt-6">
+                      <h4 className="font-medium text-neutral-800 mb-3">Follow Me</h4>
+                      <div className="flex gap-3">
+                        {["instagram", "tiktok", "linkedin", "twitter"].map((social, i) => (
+                          <a
+                            key={i}
+                            href="#"
+                            className="w-10 h-10 rounded-full bg-rose-100 flex items-center justify-center text-rose-600 hover:bg-rose-200 transition-colors"
+                          >
+                            <span className="sr-only">{social}</span>
+                            {/* Use appropriate icons based on the social media platform */}
+                            {social === "instagram" && <span className="text-lg">📷</span>}
+                            {social === "tiktok" && <span className="text-lg">📱</span>}
+                            {social === "linkedin" && <span className="text-lg">💼</span>}
+                            {social === "twitter" && <span className="text-lg">🐦</span>}
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="mt-6 p-4 bg-rose-50 rounded-lg border border-rose-100">
+                      <p className="text-neutral-700 text-sm">
+                        <span className="font-medium">Available for freelance work!</span> I'm currently accepting new
+                        projects and collaborations. Let's work together to create something amazing.
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-neutral-800 text-white py-12 px-6">
+        <div className="container mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <div className="mb-6 md:mb-0">
+              <h3 className="text-2xl font-bold">
+                <span className="text-rose-500">W</span>ahib
+              </h3>
+              <p className="text-neutral-400 mt-2">Marketing & Creative Strategist</p>
+            </div>
+
+            <div className="flex flex-col items-center md:items-end">
+              <p className="text-neutral-400 text-sm">
+                © {new Date().getFullYear()} Silahuddin Mawahib. All rights reserved.
+              </p>
+              <div className="flex gap-4 mt-3">
+                <a href="#" className="text-neutral-400 hover:text-white transition-colors">
+                  Privacy Policy
+                </a>
+                <a href="#" className="text-neutral-400 hover:text-white transition-colors">
+                  Terms of Service
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+      {/* Scroll to top button */}
+      <motion.button
+        initial={{ opacity: 0 }}
+        animate={{ opacity: scrollYProgress.get() > 0.2 ? 1 : 0 }}
+        className="fixed bottom-6 right-6 w-12 h-12 rounded-full bg-rose-600 text-white flex items-center justify-center shadow-lg hover:bg-rose-700 transition-colors z-50"
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
+        </svg>
+      </motion.button>
     </div>
-  );
+  )
 }

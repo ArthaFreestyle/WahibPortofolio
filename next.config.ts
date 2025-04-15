@@ -6,6 +6,8 @@ const nextConfig: NextConfig = {
     ignoreDuringBuilds: true,
   },typescript:{
     ignoreBuildErrors: true,
+  }, images: {
+    domains: ["assets.aceternity.com"],
   }
 };
 
