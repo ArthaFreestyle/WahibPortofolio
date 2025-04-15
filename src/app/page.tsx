@@ -22,6 +22,7 @@ import { Experience } from "./experience/experience";
 import Skills from "./skills/skills";
 import Education from "./education/education";
 import Projects from "./projects/projects";
+import Personal from "./personal/personal";
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -300,6 +301,7 @@ export default function Home() {
 
       {/* About Section */}
       <About />
+      <Personal/>
       {/* Skills Section */}
       <Skills />
 
