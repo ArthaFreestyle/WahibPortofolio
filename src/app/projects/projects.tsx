@@ -30,7 +30,7 @@ export default function Projects() {
       <div className="max-w-7xl mx-auto py-20 px-4 md:px-8 lg:px-10">
         <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
           <div className="flex items-center gap-2 mb-4">
-            <Briefcase className="text-rose-600" size={24} />
+            <Briefcase className="text-green-600" size={24} />
             <h2 className="text-lg md:text-4xl text-black dark:text-white">Projects & Campaigns</h2>
           </div>
         </motion.div>
@@ -93,7 +93,7 @@ export default function Projects() {
                       {project.tags.map((tag, j) => (
                         <span
                           key={j}
-                          className="px-2 py-1 bg-rose-100 dark:bg-rose-950/50 text-rose-700 dark:text-rose-400 rounded-full text-xs"
+                          className="px-2 py-1 bg-green-100 dark:bg-green-950/50 text-green-700 dark:text-green-400 rounded-full text-xs"
                         >
                           {tag}
                         </span>

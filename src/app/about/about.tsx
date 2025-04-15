@@ -22,7 +22,7 @@ function About() {
             animate={{ rotate: [0, -10, 10, 0] }}
             transition={{ repeat: Infinity, duration: 3 }}
           >
-            <User className="text-rose-600" size={28} />
+            <User className="text-green-600" size={28} />
           </motion.div>
           <h2 className="text-lg md:text-4xl font-bold text-black dark:text-white tracking-tight">
             About Me
@@ -94,7 +94,7 @@ function About() {
                   className="flex items-start gap-2"
                 >
                   <ChevronRight
-                    className="text-rose-500 dark:text-rose-400 mt-1 flex-shrink-0"
+                    className="text-green-500 dark:text-green-400 mt-1 flex-shrink-0"
                     size={18}
                   />
                   <span className="text-neutral-700 dark:text-neutral-300 text-sm md:text-base">

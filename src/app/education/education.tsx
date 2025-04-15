@@ -9,7 +9,7 @@ export default function Education() {
       <div className="max-w-7xl mx-auto py-20 px-4 md:px-8 lg:px-10">
         <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
           <div className="flex items-center gap-2 mb-4">
-            <GraduationCap className="text-rose-600" size={24} />
+            <GraduationCap className="text-green-600" size={24} />
             <h2 className="text-lg md:text-4xl text-black dark:text-white">Education</h2>
           </div>
         </motion.div>
@@ -38,7 +38,7 @@ export default function Education() {
                   viewport={{ once: true }}
                 >
                   <h3 className="text-xl font-semibold text-black dark:text-white">SMKN 2 Bojonegoro</h3>
-                  <p className="text-rose-600 dark:text-rose-500">Kimia Industri</p>
+                  <p className="text-green-600 dark:text-green-500">Kimia Industri</p>
                 </motion.div>
                 <motion.div
                   className="mt-2 md:mt-0"
@@ -47,7 +47,7 @@ export default function Education() {
                   transition={{ duration: 0.5, delay: 0.2 }}
                   viewport={{ once: true }}
                 >
-                  <span className="inline-block px-3 py-1 bg-rose-100 dark:bg-rose-950/50 text-rose-700 dark:text-rose-400 rounded-full text-sm">
+                  <span className="inline-block px-3 py-1 bg-green-100 dark:bg-green-950/50 text-green-700 dark:text-green-400 rounded-full text-sm">
                     2020 – 2023
                   </span>
                 </motion.div>
@@ -70,7 +70,7 @@ export default function Education() {
                       viewport={{ once: true }}
                       className="flex items-start gap-2"
                     >
-                      <ChevronRight className="text-rose-500 dark:text-rose-400 mt-1 flex-shrink-0" size={16} />
+                      <ChevronRight className="text-green-500 dark:text-green-400 mt-1 flex-shrink-0" size={16} />
                       <span className="text-neutral-700 dark:text-neutral-300 text-sm md:text-base">
                         Aktif dalam kegiatan ekstrakurikuler
                       </span>
@@ -82,7 +82,7 @@ export default function Education() {
                       viewport={{ once: true }}
                       className="flex items-start gap-2"
                     >
-                      <ChevronRight className="text-rose-500 dark:text-rose-400 mt-1 flex-shrink-0" size={16} />
+                      <ChevronRight className="text-green-500 dark:text-green-400 mt-1 flex-shrink-0" size={16} />
                       <span className="text-neutral-700 dark:text-neutral-300 text-sm md:text-base">
                         Mengembangkan keterampilan komunikasi dan kerja tim
                       </span>
@@ -106,7 +106,7 @@ export default function Education() {
                       viewport={{ once: true }}
                       className="flex items-start gap-2"
                     >
-                      <ChevronRight className="text-rose-500 dark:text-rose-400 mt-1 flex-shrink-0" size={16} />
+                      <ChevronRight className="text-green-500 dark:text-green-400 mt-1 flex-shrink-0" size={16} />
                       <span className="text-neutral-700 dark:text-neutral-300 text-sm md:text-base">
                         Analisis dan pemecahan masalah
                       </span>
@@ -118,7 +118,7 @@ export default function Education() {
                       viewport={{ once: true }}
                       className="flex items-start gap-2"
                     >
-                      <ChevronRight className="text-rose-500 dark:text-rose-400 mt-1 flex-shrink-0" size={16} />
+                      <ChevronRight className="text-green-500 dark:text-green-400 mt-1 flex-shrink-0" size={16} />
                       <span className="text-neutral-700 dark:text-neutral-300 text-sm md:text-base">
                         Manajemen proyek dan kerja laboratorium
                       </span>

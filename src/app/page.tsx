@@ -113,7 +113,7 @@ export default function Home() {
               transition={{ duration: 0.5 }}
               className="text-xl font-bold text-neutral-800"
             >
-              <span className="text-rose-600">W</span>ahib
+              <span className="text-green-600">W</span>ahib
             </motion.div>
 
             {/* Mobile menu button */}
@@ -141,9 +141,9 @@ export default function Home() {
                 <button
                   key={item}
                   onClick={() => scrollToSection(sections[index])}
-                  className={`text-neutral-600 hover:text-rose-600 transition-colors relative ${
+                  className={`text-neutral-600 hover:text-green-600 transition-colors relative ${
                     activeSection === sections[index]
-                      ? "text-rose-600 font-medium"
+                      ? "text-green-600 font-medium"
                       : ""
                   }`}
                 >
@@ -151,7 +151,7 @@ export default function Home() {
                   {activeSection === sections[index] && (
                     <motion.div
                       layoutId="activeSection"
-                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-rose-600"
+                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-green-600"
                     />
                   )}
                 </button>
@@ -182,7 +182,7 @@ export default function Home() {
                     onClick={() => scrollToSection(sections[index])}
                     className={`block w-full text-left px-4 py-2 rounded-md transition-colors ${
                       activeSection === sections[index]
-                        ? "bg-rose-50 text-rose-600 font-medium"
+                        ? "bg-green-50 text-green-600 font-medium"
                         : "text-neutral-600 hover:bg-gray-50"
                     }`}
                   >
@@ -210,7 +210,7 @@ export default function Home() {
                 <motion.div style={{ opacity, scale }} className="origin-left">
                   <h1 className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold text-neutral-800 leading-tight md:leading-snug">
                     Hi, I'm{" "}
-                    <span className="text-rose-600">SILAHUDDIN MAWAHIB</span>
+                    <span className="text-green-600">SILAHUDDIN MAWAHIB</span>
                     <br className="hidden sm:block" />
                     <Highlight className="text-black dark:text-white">
                       Marketing & Creative Strategist
@@ -243,7 +243,7 @@ export default function Home() {
   >
     <Button
       size="lg"
-      className="w-full sm:w-auto group bg-rose-600 hover:bg-rose-700"
+      className="w-full sm:w-auto group bg-green-600 hover:bg-green-700"
     >
       Contact Me
       <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -254,7 +254,7 @@ export default function Home() {
     size="lg"
     variant="outline"
     onClick={handleDownloadCV}
-    className="w-full sm:w-auto border-rose-200 hover:bg-rose-50"
+    className="w-full sm:w-auto border-green-200 hover:bg-green-50"
   >
     Download CV
     <Download className="ml-2 h-4 w-4" />
@@ -278,7 +278,7 @@ export default function Home() {
                 transition={{ duration: 1, delay: 0.5 }}
                 className="w-full md:w-1/2 lg:w-3/5 h-[400px] sm:h-[500px] md:h-[540px] lg:h-[600px] rounded-xl overflow-hidden shadow-lg relative"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-rose-100/30 to-transparent z-10 pointer-events-none rounded-xl" />
+                <div className="absolute inset-0 bg-gradient-to-br from-green-100/30 to-transparent z-10 pointer-events-none rounded-xl" />
                 <Canvas
                   camera={{
                     position: [0, 0, isMobile ? 15 : 13],
@@ -324,7 +324,7 @@ export default function Home() {
           viewport={{ once: true, margin: "-100px" }}
         >
           <div className="flex items-center gap-2 mb-6">
-            <Mail className="text-rose-600" size={24} />
+            <Mail className="text-green-600" size={24} />
             <h2 className="text-3xl font-bold text-neutral-800">Contact</h2>
           </div>
 
@@ -347,7 +347,7 @@ export default function Home() {
                         <input
                           id="name"
                           type="text"
-                          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-rose-500 focus:border-transparent"
+                          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
                           placeholder="Your name"
                           required
                         />
@@ -362,7 +362,7 @@ export default function Home() {
                         <input
                           id="email"
                           type="email"
-                          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-rose-500 focus:border-transparent"
+                          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
                           placeholder="Your email"
                           required
                         />
@@ -378,7 +378,7 @@ export default function Home() {
                       <input
                         id="subject"
                         type="text"
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-rose-500 focus:border-transparent"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
                         placeholder="Subject"
                         required
                       />
@@ -393,14 +393,14 @@ export default function Home() {
                       <textarea
                         id="message"
                         rows={4}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-rose-500 focus:border-transparent"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
                         placeholder="Your message"
                         required
                       />
                     </div>
                     <Button
                       type="submit"
-                      className="w-full bg-rose-600 hover:bg-rose-700"
+                      className="w-full bg-green-600 hover:bg-green-700"
                     >
                       Send Message
                     </Button>
@@ -417,7 +417,7 @@ export default function Home() {
                   </h3>
                   <div className="space-y-4">
                     <div className="flex items-start gap-3">
-                      <div className="w-10 h-10 rounded-full bg-rose-100 flex items-center justify-center text-rose-600">
+                      <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600">
                         <Mail size={20} />
                       </div>
                       <div>
@@ -429,7 +429,7 @@ export default function Home() {
                     </div>
 
                     <div className="flex items-start gap-3">
-                      <div className="w-10 h-10 rounded-full bg-rose-100 flex items-center justify-center text-rose-600">
+                      <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600">
                         <Phone size={20} />
                       </div>
                       <div>
@@ -448,7 +448,7 @@ export default function Home() {
                             <a
                               key={i}
                               href="#"
-                              className="w-10 h-10 rounded-full bg-rose-100 flex items-center justify-center text-rose-600 hover:bg-rose-200 transition-colors"
+                              className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600 hover:bg-green-200 transition-colors"
                             >
                               <span className="sr-only">{social}</span>
                               {/* Use appropriate icons based on the social media platform */}
@@ -470,7 +470,7 @@ export default function Home() {
                       </div>
                     </div>
 
-                    <div className="mt-6 p-4 bg-rose-50 rounded-lg border border-rose-100">
+                    <div className="mt-6 p-4 bg-green-50 rounded-lg border border-green-100">
                       <p className="text-neutral-700 text-sm">
                         <span className="font-medium">
                           Available for freelance work!
@@ -493,7 +493,7 @@ export default function Home() {
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-6 md:mb-0">
               <h3 className="text-2xl font-bold">
-                <span className="text-rose-500">W</span>ahib
+                <span className="text-green-500">W</span>ahib
               </h3>
               <p className="text-neutral-400 mt-2">
                 Marketing & Creative Strategist
@@ -528,7 +528,7 @@ export default function Home() {
       <motion.button
         initial={{ opacity: 0 }}
         animate={{ opacity: scrollYProgress.get() > 0.2 ? 1 : 0 }}
-        className="fixed bottom-6 right-6 w-12 h-12 rounded-full bg-rose-600 text-white flex items-center justify-center shadow-lg hover:bg-rose-700 transition-colors z-50"
+        className="fixed bottom-6 right-6 w-12 h-12 rounded-full bg-green-600 text-white flex items-center justify-center shadow-lg hover:bg-green-700 transition-colors z-50"
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
       >
         <svg
