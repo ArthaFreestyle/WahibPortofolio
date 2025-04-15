@@ -81,16 +81,25 @@ export default function Home() {
   }, []);
 
   const handleDownloadCV = () => {
-    toast.success("CV Downloaded", {
+    toast("CV Downloaded", {
       description: "Your CV has been downloaded successfully!",
     });
   };
 
-  const handleContactSubmit = (e) => {
+  const handleContactSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    toast.success("Message Sent!", {
-      description: "Thank you for your message. I'll get back to you soon!",
-    });
+  
+    const name = (document.getElementById("name") as HTMLInputElement).value;
+    const email = (document.getElementById("email") as HTMLInputElement).value;
+    const subject = (document.getElementById("subject") as HTMLInputElement).value;
+    const message = (document.getElementById("message") as HTMLTextAreaElement).value;
+  
+    const whatsappNumber = "62895706016809"; // ganti dengan nomor WA tujuan
+    const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+      `Name: ${name}\nEmail: ${email}\nSubject: ${subject}\nMessage: ${message}`
+    )}`;
+  
+    window.open(url, "_blank");
   };
 
   const scrollToSection = (sectionId) => {
