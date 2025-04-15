@@ -96,7 +96,7 @@ Selama masa jabatan, omzet mingguan meningkat dari Rp500.000 menjadi Rp2.000.000
     {
       title: "Changelog",
       content: (
-        <div>
+        <div >
           <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-4">
             Ringkasan pencapaian dan pembelajaran utama dari dua pengalaman terakhir.
           </p>

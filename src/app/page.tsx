@@ -1,57 +1,59 @@
-"use client"
+"use client";
 
-import React from "react"
+import React from "react";
 
-import { useState, useEffect, useRef } from "react"
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
-import { HeroHighlight, Highlight } from "@/app/components/ui/hero-highlight"
-import { Canvas } from "@react-three/fiber"
-import { Physics } from "@react-three/rapier"
-import { Band } from "@/app/lib/band"
-import { Button } from "@/components/ui/button"
+import { useState, useEffect, useRef } from "react";
 import {
-  ArrowRight,
-  Menu,
-  X,
-  Download,
-  Mail,
-  Phone,
-  Briefcase,
-} from "lucide-react"
-import { Card, CardContent } from "@/components/ui/card"
-import { Progress } from "@/components/ui/progress"
-import { toast } from "sonner"
-import About from "./about/about"
-import  {Experience} from "./experience/experience"
-import Skills from "./skills/skills"
-import Education from "./education/education"
+  motion,
+  useScroll,
+  useTransform,
+  AnimatePresence,
+} from "framer-motion";
+import { HeroHighlight, Highlight } from "@/app/components/ui/hero-highlight";
+import { Canvas } from "@react-three/fiber";
+import { Physics } from "@react-three/rapier";
+import { Band } from "@/app/lib/band";
+import { Button } from "@/components/ui/button";
+import { ArrowRight, Menu, X, Download, Mail, Phone } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { toast } from "sonner";
+import About from "./about/about";
+import { Experience } from "./experience/experience";
+import Skills from "./skills/skills";
+import Education from "./education/education";
+import Projects from "./projects/projects";
 
 export default function Home() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isMobile, setIsMobile] = useState(false)
-  const [activeSection, setActiveSection] = useState("home")
-  
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
 
-  const sections = ["home", "about", "skill", "experience", "education", "contact"]
-  const sectionRefs = useRef(sections.map(() => React.createRef()))
+  const sections = [
+    "home",
+    "about",
+    "skill",
+    "experience",
+    "education",
+    "contact",
+  ];
+  const sectionRefs = useRef(sections.map(() => React.createRef()));
 
-  const { scrollYProgress } = useScroll()
-  const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0])
-  const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.95])
+  const { scrollYProgress } = useScroll();
+  const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.95]);
 
   // Check if we're on mobile for better performance
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768)
-    }
+      setIsMobile(window.innerWidth < 768);
+    };
 
-    checkMobile()
-    window.addEventListener("resize", checkMobile)
-    return () => window.removeEventListener("resize", checkMobile)
-  }, [])
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   // Animate skill bars on view
-  
 
   // Intersection observer for sections
   useEffect(() => {
@@ -59,44 +61,44 @@ export default function Home() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setActiveSection(entry.target.id)
+            setActiveSection(entry.target.id);
           }
-        })
+        });
       },
-      { threshold: 0.5 },
-    )
+      { threshold: 0.5 }
+    );
 
     document.querySelectorAll("section[id]").forEach((section) => {
-      observer.observe(section)
-    })
+      observer.observe(section);
+    });
 
     return () => {
       document.querySelectorAll("section[id]").forEach((section) => {
-        observer.unobserve(section)
-      })
-    }
-  }, [])
+        observer.unobserve(section);
+      });
+    };
+  }, []);
 
   const handleDownloadCV = () => {
     toast.success("CV Downloaded", {
       description: "Your CV has been downloaded successfully!",
-    })
-  }
+    });
+  };
 
   const handleContactSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     toast.success("Message Sent!", {
       description: "Thank you for your message. I'll get back to you soon!",
-    })
-  }
+    });
+  };
 
   const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId)
+    const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
+      element.scrollIntoView({ behavior: "smooth" });
     }
-    setIsMenuOpen(false)
-  }
+    setIsMenuOpen(false);
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 overflow-x-hidden">
@@ -115,19 +117,33 @@ export default function Home() {
 
             {/* Mobile menu button */}
             <div className="md:hidden">
-              <Button variant="ghost" size="icon" onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label="Toggle menu">
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                aria-label="Toggle menu"
+              >
                 {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
               </Button>
             </div>
 
             {/* Desktop navigation */}
             <div className="hidden md:flex space-x-6">
-              {["Home", "About", "Skill", "Experience", "Education", "Contact"].map((item, index) => (
+              {[
+                "Home",
+                "About",
+                "Skill",
+                "Experience",
+                "Education",
+                "Contact",
+              ].map((item, index) => (
                 <button
                   key={item}
                   onClick={() => scrollToSection(sections[index])}
                   className={`text-neutral-600 hover:text-rose-600 transition-colors relative ${
-                    activeSection === sections[index] ? "text-rose-600 font-medium" : ""
+                    activeSection === sections[index]
+                      ? "text-rose-600 font-medium"
+                      : ""
                   }`}
                 >
                   {item}
@@ -152,7 +168,14 @@ export default function Home() {
                 transition={{ duration: 0.3 }}
                 className="md:hidden mt-4 py-4 space-y-4"
               >
-                {["Home", "About", "Skill", "Experience", "Education", "Contact"].map((item, index) => (
+                {[
+                  "Home",
+                  "About",
+                  "Skill",
+                  "Experience",
+                  "Education",
+                  "Contact",
+                ].map((item, index) => (
                   <button
                     key={item}
                     onClick={() => scrollToSection(sections[index])}
@@ -185,9 +208,12 @@ export default function Home() {
               >
                 <motion.div style={{ opacity, scale }} className="origin-left">
                   <h1 className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold text-neutral-800 leading-tight md:leading-snug">
-                    Hi, I'm <span className="text-rose-600">SILAHUDDIN MAWAHIB</span>
+                    Hi, I'm{" "}
+                    <span className="text-rose-600">SILAHUDDIN MAWAHIB</span>
                     <br className="hidden sm:block" />
-                    <Highlight className="text-black dark:text-white">Marketing & Creative Strategist</Highlight>
+                    <Highlight className="text-black dark:text-white">
+                      Marketing & Creative Strategist
+                    </Highlight>
                   </h1>
 
                   <motion.p
@@ -196,8 +222,9 @@ export default function Home() {
                     transition={{ delay: 0.5, duration: 0.8 }}
                     className="mt-4 text-neutral-600 text-lg max-w-md"
                   >
-                    Saya berpengalaman dalam pemasaran dan sangat tertarik menciptakan interaksi unik dengan audiens
-                    melalui pendekatan kreatif dan komunikatif.
+                    Saya berpengalaman dalam pemasaran dan sangat tertarik
+                    menciptakan interaksi unik dengan audiens melalui pendekatan
+                    kreatif dan komunikatif.
                   </motion.p>
 
                   <motion.div
@@ -206,10 +233,19 @@ export default function Home() {
                     transition={{ delay: 0.7, duration: 0.8 }}
                     className="mt-8 flex flex-col sm:flex-row gap-4"
                   >
-                    <Button size="lg" className="group bg-rose-600 hover:bg-rose-700">
-                      Contact Me
-                      <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                    </Button>
+                    <a
+                      href="https://wa.me/62895706016809"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Button
+                        size="lg"
+                        className="group bg-rose-600 hover:bg-rose-700"
+                      >
+                        Contact Me
+                        <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                      </Button>
+                    </a>
                     <Button
                       size="lg"
                       variant="outline"
@@ -226,9 +262,7 @@ export default function Home() {
                     animate={{ opacity: 1 }}
                     transition={{ delay: 1, duration: 0.8 }}
                     className="mt-8 flex items-center gap-4"
-                  >
-                    
-                  </motion.div>
+                  ></motion.div>
                 </motion.div>
               </motion.div>
 
@@ -241,7 +275,10 @@ export default function Home() {
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-rose-100/30 to-transparent z-10 pointer-events-none rounded-xl" />
                 <Canvas
-                  camera={{ position: [0, 0, isMobile ? 15 : 13], fov: isMobile ? 30 : 25 }}
+                  camera={{
+                    position: [0, 0, isMobile ? 15 : 13],
+                    fov: isMobile ? 30 : 25,
+                  }}
                   dpr={[1, 2]} // Optimize performance by limiting pixel ratio
                   performance={{ min: 0.5 }} // Allow performance scaling for mobile
                 >
@@ -258,85 +295,19 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <About/>
+      <About />
       {/* Skills Section */}
-      <Skills/>
+      <Skills />
 
-      <Experience/>
+      <Experience />
+
       {/* Experience Section */}
-      
+
       {/* Education Section */}
-      <Education/>
+      <Education />
 
-     
       {/* Projects/Portfolio Section */}
-      <section id="projects" className="container mx-auto px-6 py-20">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          viewport={{ once: true, margin: "-100px" }}
-        >
-          <div className="flex items-center gap-2 mb-6">
-            <Briefcase className="text-rose-600" size={24} />
-            <h2 className="text-3xl font-bold text-neutral-800">Projects & Campaigns</h2>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              {
-                title: "Shopee Live Campaign",
-                description: "Kampanye live streaming yang menghasilkan omzet Rp450 juta dalam satu bulan",
-                image: "/placeholder.svg?height=200&width=400",
-                tags: ["Live Streaming", "E-commerce", "Sales"],
-              },
-              {
-                title: "Toko Offline Rebrand",
-                description: "Rebranding toko offline yang meningkatkan rating Google Maps dari 4.5 ke 4.9",
-                image: "/placeholder.svg?height=200&width=400",
-                tags: ["Branding", "Retail", "Customer Experience"],
-              },
-              {
-                title: "Digital Marketing Strategy",
-                description: "Strategi pemasaran digital yang meningkatkan engagement sebesar 200%",
-                image: "/placeholder.svg?height=200&width=400",
-                tags: ["Digital Marketing", "Strategy", "Social Media"],
-              },
-            ].map((project, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <Card className="overflow-hidden h-full flex flex-col">
-                  <div className="relative h-48 overflow-hidden">
-                    <img
-                      src={project.image || "/placeholder.svg"}
-                      alt={project.title}
-                      className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                  </div>
-                  <CardContent className="pt-6 flex-grow flex flex-col">
-                    <h3 className="text-xl font-semibold text-neutral-800 mb-2">{project.title}</h3>
-                    <p className="text-neutral-600 text-sm flex-grow">{project.description}</p>
-                    <div className="flex flex-wrap gap-2 mt-4">
-                      {project.tags.map((tag, j) => (
-                        <span key={j} className="px-2 py-1 bg-rose-100 text-rose-700 rounded-full text-xs">
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-      </section>
-
+      <Projects />
 
       {/* Contact Section */}
       <section id="contact" className="container mx-auto px-6 py-20">
@@ -355,11 +326,16 @@ export default function Home() {
             <div>
               <Card>
                 <CardContent className="pt-6">
-                  <h3 className="text-xl font-semibold mb-4 text-neutral-800">Get In Touch</h3>
+                  <h3 className="text-xl font-semibold mb-4 text-neutral-800">
+                    Get In Touch
+                  </h3>
                   <form onSubmit={handleContactSubmit} className="space-y-4">
                     <div className="grid grid-cols-2 gap-4">
                       <div className="space-y-2">
-                        <label htmlFor="name" className="text-sm font-medium text-neutral-700">
+                        <label
+                          htmlFor="name"
+                          className="text-sm font-medium text-neutral-700"
+                        >
                           Name
                         </label>
                         <input
@@ -371,7 +347,10 @@ export default function Home() {
                         />
                       </div>
                       <div className="space-y-2">
-                        <label htmlFor="email" className="text-sm font-medium text-neutral-700">
+                        <label
+                          htmlFor="email"
+                          className="text-sm font-medium text-neutral-700"
+                        >
                           Email
                         </label>
                         <input
@@ -384,7 +363,10 @@ export default function Home() {
                       </div>
                     </div>
                     <div className="space-y-2">
-                      <label htmlFor="subject" className="text-sm font-medium text-neutral-700">
+                      <label
+                        htmlFor="subject"
+                        className="text-sm font-medium text-neutral-700"
+                      >
                         Subject
                       </label>
                       <input
@@ -396,7 +378,10 @@ export default function Home() {
                       />
                     </div>
                     <div className="space-y-2">
-                      <label htmlFor="message" className="text-sm font-medium text-neutral-700">
+                      <label
+                        htmlFor="message"
+                        className="text-sm font-medium text-neutral-700"
+                      >
                         Message
                       </label>
                       <textarea
@@ -407,7 +392,10 @@ export default function Home() {
                         required
                       />
                     </div>
-                    <Button type="submit" className="w-full bg-rose-600 hover:bg-rose-700">
+                    <Button
+                      type="submit"
+                      className="w-full bg-rose-600 hover:bg-rose-700"
+                    >
                       Send Message
                     </Button>
                   </form>
@@ -418,7 +406,9 @@ export default function Home() {
             <div>
               <Card>
                 <CardContent className="pt-6">
-                  <h3 className="text-xl font-semibold mb-4 text-neutral-800">Contact Information</h3>
+                  <h3 className="text-xl font-semibold mb-4 text-neutral-800">
+                    Contact Information
+                  </h3>
                   <div className="space-y-4">
                     <div className="flex items-start gap-3">
                       <div className="w-10 h-10 rounded-full bg-rose-100 flex items-center justify-center text-rose-600">
@@ -426,7 +416,9 @@ export default function Home() {
                       </div>
                       <div>
                         <p className="font-medium text-neutral-800">Email</p>
-                        <p className="text-neutral-600">shudmawahib@gmail.com</p>
+                        <p className="text-neutral-600">
+                          shudmawahib@gmail.com
+                        </p>
                       </div>
                     </div>
 
@@ -441,29 +433,44 @@ export default function Home() {
                     </div>
 
                     <div className="mt-6">
-                      <h4 className="font-medium text-neutral-800 mb-3">Follow Me</h4>
+                      <h4 className="font-medium text-neutral-800 mb-3">
+                        Follow Me
+                      </h4>
                       <div className="flex gap-3">
-                        {["instagram", "tiktok", "linkedin", "twitter"].map((social, i) => (
-                          <a
-                            key={i}
-                            href="#"
-                            className="w-10 h-10 rounded-full bg-rose-100 flex items-center justify-center text-rose-600 hover:bg-rose-200 transition-colors"
-                          >
-                            <span className="sr-only">{social}</span>
-                            {/* Use appropriate icons based on the social media platform */}
-                            {social === "instagram" && <span className="text-lg">📷</span>}
-                            {social === "tiktok" && <span className="text-lg">📱</span>}
-                            {social === "linkedin" && <span className="text-lg">💼</span>}
-                            {social === "twitter" && <span className="text-lg">🐦</span>}
-                          </a>
-                        ))}
+                        {["instagram", "tiktok", "linkedin", "twitter"].map(
+                          (social, i) => (
+                            <a
+                              key={i}
+                              href="#"
+                              className="w-10 h-10 rounded-full bg-rose-100 flex items-center justify-center text-rose-600 hover:bg-rose-200 transition-colors"
+                            >
+                              <span className="sr-only">{social}</span>
+                              {/* Use appropriate icons based on the social media platform */}
+                              {social === "instagram" && (
+                                <span className="text-lg">📷</span>
+                              )}
+                              {social === "tiktok" && (
+                                <span className="text-lg">📱</span>
+                              )}
+                              {social === "linkedin" && (
+                                <span className="text-lg">💼</span>
+                              )}
+                              {social === "twitter" && (
+                                <span className="text-lg">🐦</span>
+                              )}
+                            </a>
+                          )
+                        )}
                       </div>
                     </div>
 
                     <div className="mt-6 p-4 bg-rose-50 rounded-lg border border-rose-100">
                       <p className="text-neutral-700 text-sm">
-                        <span className="font-medium">Available for freelance work!</span> I'm currently accepting new
-                        projects and collaborations. Let's work together to create something amazing.
+                        <span className="font-medium">
+                          Available for freelance work!
+                        </span>{" "}
+                        I'm currently accepting new projects and collaborations.
+                        Let's work together to create something amazing.
                       </p>
                     </div>
                   </div>
@@ -482,18 +489,27 @@ export default function Home() {
               <h3 className="text-2xl font-bold">
                 <span className="text-rose-500">W</span>ahib
               </h3>
-              <p className="text-neutral-400 mt-2">Marketing & Creative Strategist</p>
+              <p className="text-neutral-400 mt-2">
+                Marketing & Creative Strategist
+              </p>
             </div>
 
             <div className="flex flex-col items-center md:items-end">
               <p className="text-neutral-400 text-sm">
-                © {new Date().getFullYear()} Silahuddin Mawahib. All rights reserved.
+                © {new Date().getFullYear()} Silahuddin Mawahib. All rights
+                reserved.
               </p>
               <div className="flex gap-4 mt-3">
-                <a href="#" className="text-neutral-400 hover:text-white transition-colors">
+                <a
+                  href="#"
+                  className="text-neutral-400 hover:text-white transition-colors"
+                >
                   Privacy Policy
                 </a>
-                <a href="#" className="text-neutral-400 hover:text-white transition-colors">
+                <a
+                  href="#"
+                  className="text-neutral-400 hover:text-white transition-colors"
+                >
                   Terms of Service
                 </a>
               </div>
@@ -516,9 +532,14 @@ export default function Home() {
           viewBox="0 0 24 24"
           stroke="currentColor"
         >
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M5 15l7-7 7 7"
+          />
         </svg>
       </motion.button>
     </div>
-  )
+  );
 }
