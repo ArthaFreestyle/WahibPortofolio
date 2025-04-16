@@ -47,27 +47,283 @@ export default function Projects() {
   const projects = [
     {
       title: "Shopee Live Campaign",
-      description: "Kampanye live streaming yang menghasilkan omzet Rp450 juta dalam satu bulan",
+      description: "Kumpulan link video konten TikTok dan personal project",
       image: "/vid1.png?height=200&width=400",
-      tags: ["Live Streaming", "E-commerce", "Sales"],
+      tags: ["TikTok", "Instagram", "YouTube"],
       ctaText: "Lihat Detail",
       ctaLink: "#",
       content: () => (
-        <div>
-          <p>
-            Kampanye live streaming ini dirancang untuk meningkatkan penjualan produk melalui platform Shopee. Dengan
-            strategi konten yang menarik dan interaktif, kampanye ini berhasil:
-          </p>
-          <ul className="list-disc pl-5 mt-2">
-            <li>Menghasilkan omzet Rp450 juta dalam satu bulan</li>
-            <li>Meningkatkan jumlah viewers sebesar 300%</li>
-            <li>Memperluas jangkauan ke segmen pasar baru</li>
-            <li>Membangun loyalitas pelanggan melalui interaksi langsung</li>
-          </ul>
-          <p className="mt-2">
-            Kampanye ini menunjukkan efektivitas live streaming sebagai alat pemasaran yang kuat dalam ekosistem
-            e-commerce modern.
-          </p>
+        <div className="space-y-6">
+          <div>
+            <h4 className="font-semibold text-lg mb-2 text-black dark:text-white">LINK KONTEN AKUN @precise_shoes</h4>
+            <div className="grid grid-cols-1 gap-2">
+              <a
+                href="https://vt.tiktok.com/ZSrXH3sXC/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 dark:text-blue-400 hover:underline truncate"
+              >
+                https://vt.tiktok.com/ZSrXH3sXC/
+              </a>
+              <a
+                href="https://vt.tiktok.com/ZSrX9Mk9U/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 dark:text-blue-400 hover:underline truncate"
+              >
+                https://vt.tiktok.com/ZSrX9Mk9U/
+              </a>
+              <a
+                href="https://vt.tiktok.com/ZSrX9he8G/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 dark:text-blue-400 hover:underline truncate"
+              >
+                https://vt.tiktok.com/ZSrX9he8G/
+              </a>
+              <a
+                href="https://vt.tiktok.com/ZSrXH3Dxq/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 dark:text-blue-400 hover:underline truncate"
+              >
+                https://vt.tiktok.com/ZSrXH3Dxq/
+              </a>
+              <a
+                href="https://vt.tiktok.com/ZSrXHwHWV/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 dark:text-blue-400 hover:underline truncate"
+              >
+                https://vt.tiktok.com/ZSrXHwHWV/
+              </a>
+              <a
+                href="https://vt.tiktok.com/ZSrX9kRhh/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 dark:text-blue-400 hover:underline truncate"
+              >
+                https://vt.tiktok.com/ZSrX9kRhh/
+              </a>
+              <a
+                href="https://vt.tiktok.com/ZSrXHKAhW/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 dark:text-blue-400 hover:underline truncate"
+              >
+                https://vt.tiktok.com/ZSrXHKAhW/
+              </a>
+              <a
+                href="https://vt.tiktok.com/ZSrXHo3gs/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 dark:text-blue-400 hover:underline truncate"
+              >
+                https://vt.tiktok.com/ZSrXHo3gs/
+              </a>
+              <a
+                href="https://vt.tiktok.com/ZSrX9Ywyj/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 dark:text-blue-400 hover:underline truncate"
+              >
+                https://vt.tiktok.com/ZSrX9Ywyj/
+              </a>
+              <a
+                href="https://vt.tiktok.com/ZSrXHcV7X/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 dark:text-blue-400 hover:underline truncate"
+              >
+                https://vt.tiktok.com/ZSrXHcV7X/
+              </a>
+              <a
+                href="https://vt.tiktok.com/ZSrX9LyPg/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 dark:text-blue-400 hover:underline truncate"
+              >
+                https://vt.tiktok.com/ZSrX9LyPg/
+              </a>
+              <a
+                href="https://vt.tiktok.com/ZSrXHwrpJ/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 dark:text-blue-400 hover:underline truncate"
+              >
+                https://vt.tiktok.com/ZSrXHwrpJ/
+              </a>
+              <a
+                href="https://vt.tiktok.com/ZSrX92hkL/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 dark:text-blue-400 hover:underline truncate"
+              >
+                https://vt.tiktok.com/ZSrX92hkL/
+              </a>
+              <a
+                href="https://vt.tiktok.com/ZSrX91WXF/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 dark:text-blue-400 hover:underline truncate"
+              >
+                https://vt.tiktok.com/ZSrX91WXF/
+              </a>
+              <a
+                href="https://vt.tiktok.com/ZSrXHK8L5/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 dark:text-blue-400 hover:underline truncate"
+              >
+                https://vt.tiktok.com/ZSrXHK8L5/
+              </a>
+              <a
+                href="https://vt.tiktok.com/ZSrX9JSLb/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 dark:text-blue-400 hover:underline truncate"
+              >
+                https://vt.tiktok.com/ZSrX9JSLb/
+              </a>
+              <a
+                href="https://vt.tiktok.com/ZSrX9hDMB/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 dark:text-blue-400 hover:underline truncate"
+              >
+                https://vt.tiktok.com/ZSrX9hDMB/
+              </a>
+              <a
+                href="https://vt.tiktok.com/ZSrX9FtPo/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 dark:text-blue-400 hover:underline truncate"
+              >
+                https://vt.tiktok.com/ZSrX9FtPo/
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-lg mb-2 text-black dark:text-white">LINK KONTEN AKUN @sepatu.precise</h4>
+            <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-2">full dikelola oleh wahib</p>
+            <div className="grid grid-cols-1 gap-2">
+              <a
+                href="https://vt.tiktok.com/ZSrX9a3y8/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 dark:text-blue-400 hover:underline truncate"
+              >
+                https://vt.tiktok.com/ZSrX9a3y8/
+              </a>
+              <a
+                href="https://vt.tiktok.com/ZSrX99e2D/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 dark:text-blue-400 hover:underline truncate"
+              >
+                https://vt.tiktok.com/ZSrX99e2D/
+              </a>
+              <a
+                href="https://vt.tiktok.com/ZSrX9CwMY/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 dark:text-blue-400 hover:underline truncate"
+              >
+                https://vt.tiktok.com/ZSrX9CwMY/
+              </a>
+              <a
+                href="https://vt.tiktok.com/ZSrX9fmMA/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 dark:text-blue-400 hover:underline truncate"
+              >
+                https://vt.tiktok.com/ZSrX9fmMA/
+              </a>
+              <a
+                href="https://vt.tiktok.com/ZSrX99jVJ/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 dark:text-blue-400 hover:underline truncate"
+              >
+                https://vt.tiktok.com/ZSrX99jVJ/
+              </a>
+              <a
+                href="https://vt.tiktok.com/ZSrX9aAt6/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 dark:text-blue-400 hover:underline truncate"
+              >
+                https://vt.tiktok.com/ZSrX9aAt6/
+              </a>
+              <a
+                href="https://vt.tiktok.com/ZSrX9yj4r/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 dark:text-blue-400 hover:underline truncate"
+              >
+                https://vt.tiktok.com/ZSrX9yj4r/
+              </a>
+              <a
+                href="https://vt.tiktok.com/ZSrX9Up2N/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 dark:text-blue-400 hover:underline truncate"
+              >
+                https://vt.tiktok.com/ZSrX9Up2N/
+              </a>
+              <a
+                href="https://vt.tiktok.com/ZSrX9s9TE/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 dark:text-blue-400 hover:underline truncate"
+              >
+                https://vt.tiktok.com/ZSrX9s9TE/
+              </a>
+              <a
+                href="https://vt.tiktok.com/ZSrX9fL3S/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 dark:text-blue-400 hover:underline truncate"
+              >
+                https://vt.tiktok.com/ZSrX9fL3S/
+              </a>
+              <a
+                href="https://vt.tiktok.com/ZSrX9XuJx/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 dark:text-blue-400 hover:underline truncate"
+              >
+                https://vt.tiktok.com/ZSrX9XuJx/
+              </a>
+              <a
+                href="https://vt.tiktok.com/ZSrX9DCuj/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 dark:text-blue-400 hover:underline truncate"
+              >
+                https://vt.tiktok.com/ZSrX9DCuj/
+              </a>
+              <a
+                href="https://vt.tiktok.com/ZSrX9QqNL/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 dark:text-blue-400 hover:underline truncate"
+              >
+                https://vt.tiktok.com/ZSrX9QqNL/
+              </a>
+              <a
+                href="https://vt.tiktok.com/ZSrXC41LH/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 dark:text-blue-400 hover:underline truncate"
+              >
+                https://vt.tiktok.com/ZSrXC41LH/
+              </a>
+            </div>
+          </div>
+
+          
         </div>
       ),
     },
