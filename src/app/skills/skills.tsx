@@ -85,11 +85,7 @@ export default function Skills() {
                         Content Creation
                       </span>
                     </div>
-                    <Progress
-                      value={skillValues.contentCreation}
-                      className="h-2 bg-neutral-200 dark:bg-neutral-700 rounded-full"
-                      indicatorClassName="bg-gradient-to-r from-green-400 to-green-600 rounded-full"
-                    />
+                    
                   </motion.div>
 
                   <motion.div
@@ -104,11 +100,7 @@ export default function Skills() {
                         Video Editing
                       </span>
                     </div>
-                    <Progress
-                      value={skillValues.videoEditing}
-                      className="h-2 bg-neutral-200 dark:bg-neutral-700 rounded-full"
-                      indicatorClassName="bg-gradient-to-r from-green-400 to-green-600 rounded-full"
-                    />
+                    
                   </motion.div>
 
                   <motion.div
@@ -123,11 +115,7 @@ export default function Skills() {
                         Digital Marketing
                       </span>
                     </div>
-                    <Progress
-                      value={skillValues.digitalMarketing}
-                      className="h-2 bg-neutral-200 dark:bg-neutral-700 rounded-full"
-                      indicatorClassName="bg-gradient-to-r from-green-400 to-green-600 rounded-full"
-                    />
+                    
                   </motion.div>
                 </div>
 
@@ -144,11 +132,7 @@ export default function Skills() {
                         Communication & Public Speaking
                       </span>
                     </div>
-                    <Progress
-                      value={skillValues.communication}
-                      className="h-2 bg-neutral-200 dark:bg-neutral-700 rounded-full"
-                      indicatorClassName="bg-gradient-to-r from-green-400 to-green-600 rounded-full"
-                    />
+                    
                   </motion.div>
 
                   <motion.div
@@ -163,11 +147,7 @@ export default function Skills() {
                         Teamwork & Leadership
                       </span>
                     </div>
-                    <Progress
-                      value={skillValues.teamwork}
-                      className="h-2 bg-neutral-200 dark:bg-neutral-700 rounded-full"
-                      indicatorClassName="bg-gradient-to-r from-green-400 to-green-600 rounded-full"
-                    />
+                    
                   </motion.div>
 
                   <motion.div
@@ -182,11 +162,7 @@ export default function Skills() {
                         Market Research & Negotiation
                       </span>
                     </div>
-                    <Progress
-                      value={skillValues.marketResearch}
-                      className="h-2 bg-neutral-200 dark:bg-neutral-700 rounded-full"
-                      indicatorClassName="bg-gradient-to-r from-green-400 to-green-600 rounded-full"
-                    />
+                    
                   </motion.div>
                 </div>
               </div>
