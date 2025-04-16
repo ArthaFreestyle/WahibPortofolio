@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import { ContainerScroll } from "@/components/ui/container-scroll-animation";
-import Image from "next/image";
 
 export default function Personal() {
   return (
@@ -18,20 +17,16 @@ export default function Personal() {
           </>
         }
       >
-        <a
-          href="https://drive.google.com/drive/folders/12qxuagUDiLE-qRs7PCIZ9wjZaDRXFx8m"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            src="/content2.png"
-            alt="hero"
-            height={720}
-            width={1400}
-            className="mx-auto rounded-2xl object-cover h-full object-left-top"
-            draggable={false}
-          />
-        </a>
+        
+        <iframe
+  className="w-full h-full"
+  src="https://www.youtube.com/embed/SPzd9vHAx3k"
+  title="YouTube video player"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowFullScreen
+></iframe>
+
+        
       </ContainerScroll>
     </div>
   );
