@@ -16,7 +16,7 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-[#18230F] dark overflow-x-hidden">
+    <div className="min-h-screen bg-gradient-to-bl from-[#18230F] dark overflow-x-hidden">
       {/* Hero Section */}
       <section id="home" className="relative">
         <div className="container mx-auto px-6 pb-16 md:pb-24">
@@ -26,7 +26,7 @@ export default function Home() {
               initial={{ opacity: 0, x: 100 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, delay: 0.5 }}
-              className="absolute top-0 right-[-25%] md:right-[-20%] w-[50%] md:w-[55%] h-[700px] md:h-800px] z-30"
+              className="absolute top-0  md:right-[-20%] w-[50%] md:w-[55%] h-[700px] md:h-800px] z-30"
             >
               <Canvas
                 camera={{
