@@ -267,6 +267,7 @@ export default function Home() {
                   className="w-5 h-5 md:w-6 md:h-6"
                 >
                   <g transform="scale(0.12)">
+                  <rect x="0" y="0" width="200" height="200" fill="white"/>
                     <path
                       stroke="#000000"
                       strokeLinecap="round"
@@ -441,7 +442,9 @@ export default function Home() {
           </div>
         <div className="flex justify-center items-center flex-col md:flex-row gap-4 max-w-7xl mx-auto px-6">
           
-          <ThreeDCardDemo/>
+          <ThreeDCardDemo title="PETSNPLANT.ID" subtitle=" " image="/PNP.png" link="pnp"/>
+          <ThreeDCardDemo title="PRECISE SHOES" subtitle=" " image="/PRECISE.png" link="precise"/>
+          <ThreeDCardDemo title="PAID PROJECT" subtitle=" " image="/paid.jpeg" link="paid"/>
           
         </div>
         
