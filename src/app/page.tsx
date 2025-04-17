@@ -21,12 +21,11 @@ export default function Home() {
       <section id="home" className="relative">
         <div className="container mx-auto px-6 pb-16 md:pb-24">
           <div className="flex flex-col items-center px-10 justify-center relative">
-            {/* 3D Band - Positioned far right and in front */}
             <motion.div
               initial={{ opacity: 0, x: 100 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, delay: 0.5 }}
-              className="absolute top-0  md:right-[-20%] w-[50%] md:w-[55%] h-[700px] md:h-800px] z-30"
+              className="absolute top-0 right-[-25%] hidden md:block md:right-[-20%] w-[50%] md:w-[55%] h-[700px] md:h-800px] z-30"
             >
               <Canvas
                 camera={{
@@ -50,7 +49,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.2 }}
-              className="w-full pb-8 pt-25 z-10 relative text-center"
+              className="w-full pb-8 pt-60 z-10 relative text-center"
             >
               <motion.div>
                 <h1 className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold leading-tight md:leading-snug">
@@ -116,6 +115,9 @@ export default function Home() {
             </motion.div>
           </div>
         </div>
+      </section>
+      <section id="about" >
+
       </section>
     </div>
   )
