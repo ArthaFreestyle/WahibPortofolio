@@ -4,7 +4,6 @@ import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { TrendingUp } from "lucide-react";
 
-
 export default function Page() {
   useEffect(() => {
     const handleScroll = () => {
@@ -207,38 +206,90 @@ export default function Page() {
           </p>
         </motion.div>
         <div className="flex flex-col md:flex-row items-center justify-center gap-12 md:gap-20 mb-20">
-        <blockquote
-          className="tiktok-embed"
-          cite="https://www.tiktok.com/@precise_shoes/video/7475652193199213831"
-          data-video-id="7475652193199213831"
-          style={{ maxWidth: 605, minWidth: 325 }}
-        >
-          <section>Loading TikTok video...</section>
-        </blockquote>
-        <blockquote
-          className="tiktok-embed"
-          cite="https://www.tiktok.com/@precise_shoes/video/7467117877229882631"
-          data-video-id="7467117877229882631"
-          style={{ maxWidth: 605, minWidth: 325 }}
-        >
-          <section>Loading TikTok video...</section>
-        </blockquote>
-        <blockquote
-          className="tiktok-embed"
-          cite="https://www.tiktok.com/@precise_shoes/video/7450532876887575813"
-          data-video-id="7450532876887575813"
-          style={{ maxWidth: 605, minWidth: 325 }}
-        >
-          <section>Loading TikTok video...</section>
-        </blockquote>
-        <blockquote
-          className="tiktok-embed"
-          cite="https://www.tiktok.com/@precise_shoes/video/7420729665137986821"
-          data-video-id="7420729665137986821"
-          style={{ maxWidth: 605, minWidth: 325 }}
-        >
-          <section>Loading TikTok video...</section>
-        </blockquote>
+          <blockquote
+            className="tiktok-embed"
+            cite="https://www.tiktok.com/@precise_shoes/video/7475652193199213831"
+            data-video-id="7475652193199213831"
+            style={{ maxWidth: 605, minWidth: 325 }}
+          >
+            <section>Loading TikTok video...</section>
+          </blockquote>
+          <blockquote
+            className="tiktok-embed"
+            cite="https://www.tiktok.com/@precise_shoes/video/7467117877229882631"
+            data-video-id="7467117877229882631"
+            style={{ maxWidth: 605, minWidth: 325 }}
+          >
+            <section>Loading TikTok video...</section>
+          </blockquote>
+          <blockquote
+            className="tiktok-embed"
+            cite="https://www.tiktok.com/@precise_shoes/video/7450532876887575813"
+            data-video-id="7450532876887575813"
+            style={{ maxWidth: 605, minWidth: 325 }}
+          >
+            <section>Loading TikTok video...</section>
+          </blockquote>
+          <blockquote
+            className="tiktok-embed"
+            cite="https://www.tiktok.com/@precise_shoes/video/7420729665137986821"
+            data-video-id="7420729665137986821"
+            style={{ maxWidth: 605, minWidth: 325 }}
+          >
+            <section>Loading TikTok video...</section>
+          </blockquote>
+        </div>
+      </section>
+      <section className="py-20 px-6 md:px-12 relative bg-black/30">
+        <h2 className="text-3xl md:text-4xl font-bold mb-30 text-center">
+          Feed
+        </h2>
+        <div className="flex flex-col md:flex-row items-center gap-8">
+        <div className="relative overflow-hidden rounded-lg shadow-md">
+          <img
+            src="/precisefeed/ayaka japanese.jpg"
+            alt="ambar"
+            width={300}
+            height={300}
+            className="object-cover h-auto"
+          />
+        </div>
+        <div className="relative overflow-hidden rounded-lg shadow-md">
+          <img
+            src="/precisefeed/clock.jpg"
+            alt="ambar"
+            width={300}
+            height={300}
+            className="object-cover h-auto"
+          />
+        </div>
+        <div className="relative overflow-hidden rounded-lg shadow-md">
+          <img
+            src="/precisefeed/ikari.jpg"
+            alt="ambar"
+            width={300}
+            height={300}
+            className="object-cover h-auto"
+          />
+        </div>
+        <div className="relative overflow-hidden rounded-lg shadow-md">
+          <img
+            src="/precisefeed/polar pink.jpg"
+            alt="ambar"
+            width={300}
+            height={300}
+            className="object-cover h-auto"
+          />
+        </div>
+        <div className="relative overflow-hidden rounded-lg shadow-md">
+          <img
+            src="/precisefeed/polar school.jpg"
+            alt="ambar"
+            width={300}
+            height={300}
+            className="object-cover h-auto"
+          />
+        </div>
         </div>
         
       </section>

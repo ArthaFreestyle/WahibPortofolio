@@ -157,7 +157,7 @@ export default function Home() {
             Saya adalah seorang pemasar media sosial yang berpengalaman dan
             memiliki ketertarikan mendalam dalam menciptakan interaksi unik
             dengan audiens. Dengan pendekatan kreatif dan komunikatif, saya
-            berkomitmen untuk membantu merek Anda bersinar di dunia digital.
+            berkomitmen untuk membantu merek Anda bersaing di dunia digital.
           </motion.p>
         </div>
         
@@ -177,7 +177,7 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            SMKN 2 Bojonegoro 2020 – 2023
+            Teknik Kimia SMKN 2 Bojonegoro 2020 – 2023
           </motion.p>
         </div>
       </div>
@@ -441,11 +441,12 @@ export default function Home() {
               Recent Work
             </motion.h1>
           </div>
-        <div className="flex justify-center items-center flex-col md:flex-row gap-4 max-w-7xl mx-auto px-6">
+        <div className="flex justify-center items-center flex-wrap md:flex-row gap-6 max-w-7xl mx-auto px-6">
           
           <ThreeDCardDemo title="PETSNPLANT.ID" subtitle=" " image="/PNP.png" link="pnp"/>
           <ThreeDCardDemo title="PRECISE SHOES" subtitle=" " image="/precise.jpg" link="precise"/>
           <ThreeDCardDemo title="PAID PROJECT" subtitle=" " image="/paid.jpeg" link="paid"/>
+          <ThreeDCardDemo title="PERSONAL PROJECT" subtitle=" " image="/PERSONAL PROJECT/6.png" link="personal"/>
           
         </div>
         
