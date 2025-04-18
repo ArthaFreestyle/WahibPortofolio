@@ -21,7 +21,6 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gradient-to-[#18230F] from-black dark overflow-x-hidden">
-      <Navbar className="top-2" />
       {/* Hero Section */}
       <section id="home" className="relative">
         <div className="container mx-auto px-6 pb-16 md:pb-24">
