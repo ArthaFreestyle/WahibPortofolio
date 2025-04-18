@@ -9,6 +9,7 @@ import { ArrowRight, Download } from "lucide-react";
 import { toast } from "sonner";
 import { Navbar } from "@/app/navbar/navbar";
 import { ThreeDCardDemo } from "./projects/projects";
+import ContactSection from "./contact/contact";
 
 export default function Home() {
   const handleDownloadCV = () => {
@@ -443,13 +444,14 @@ export default function Home() {
         <div className="flex justify-center items-center flex-col md:flex-row gap-4 max-w-7xl mx-auto px-6">
           
           <ThreeDCardDemo title="PETSNPLANT.ID" subtitle=" " image="/PNP.png" link="pnp"/>
-          <ThreeDCardDemo title="PRECISE SHOES" subtitle=" " image="/PRECISE.png" link="precise"/>
+          <ThreeDCardDemo title="PRECISE SHOES" subtitle=" " image="/precise.jpg" link="precise"/>
           <ThreeDCardDemo title="PAID PROJECT" subtitle=" " image="/paid.jpeg" link="paid"/>
           
         </div>
         
         
       </section>
+      <ContactSection/>
     </div>
   );
 }
