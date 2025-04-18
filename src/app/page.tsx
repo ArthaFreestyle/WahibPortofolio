@@ -13,6 +13,7 @@ import ContactSection from "./contact/contact";
 
 export default function Home() {
   const handleDownloadCV = () => {
+    window.location.href = '/pdf/CV.pdf'; // Replace with the actual path to your CV file
     toast("CV Downloaded", {
       description: "Your CV has been downloaded successfully!",
     });
