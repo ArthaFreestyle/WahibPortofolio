@@ -446,7 +446,7 @@ export default function Home() {
           <ThreeDCardDemo title="PETSNPLANT.ID" subtitle=" " image="/PNP.png" link="pnp"/>
           <ThreeDCardDemo title="PRECISE SHOES" subtitle=" " image="/precise.jpg" link="precise"/>
           <ThreeDCardDemo title="PAID PROJECT" subtitle=" " image="/paid.jpeg" link="paid"/>
-          <ThreeDCardDemo title="PERSONAL PROJECT" subtitle=" " image="/PERSONAL PROJECT/6.png" link="personal"/>
+          <ThreeDCardDemo title="PERSONAL PROJECT" subtitle=" " image="/PERSONAL PROJECT/8.png" link="personal"/>
           
         </div>
         
