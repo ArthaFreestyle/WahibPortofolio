@@ -30,6 +30,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
+      <head>
+        <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" precedence="default" />
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4" precedence="default"></script>
+      </head>
+      
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
